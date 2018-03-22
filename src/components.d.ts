@@ -45,8 +45,7 @@ declare global {
   }
   namespace JSXElements {
     export interface MyComponentAttributes extends HTMLAttributes {
-      'first'?: string;
-      'last'?: string;
+      'name'?: string;
       
     }
   }

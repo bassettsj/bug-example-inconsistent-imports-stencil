@@ -9,7 +9,14 @@
 </head>
 <body>
 
-  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+  <my-component name="Stencil"></my-component>
 
+  <button id="btn">Change to Web Components</button>
+  <script>
+    document.querySelector('#btn').addEventListener('click', () => {
+      debugger;
+      document.querySelector('my-component').name = 'Web Components'
+    });
+  </script>
 </body>
 </html>

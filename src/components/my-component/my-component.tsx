@@ -1,4 +1,8 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, Watch } from '@stencil/core';
+// One style of import breaks the unit tests, the other breaks the actual build from stencil
+// import cookie from 'js-cookie';
+import * as cookie from 'js-cookie';
+
 
 @Component({
   tag: 'my-component',
@@ -7,14 +11,16 @@ import { Component, Prop } from '@stencil/core';
 })
 export class MyComponent {
 
-  @Prop() first: string;
-  @Prop() last: string;
+  @Prop() name: string = cookie.get('name');
+
+  @Watch('name')
+  nameChanged(name) {
+    cookie.set('name', name);
+  }
 
   render() {
     return (
-      <div>
-        Hello, World! I'm {this.first} {this.last}
-      </div>
+      <div>{this.name}</div>
     );
   }
 }
